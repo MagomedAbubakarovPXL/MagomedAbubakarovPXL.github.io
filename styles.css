@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    color: #343a40;
+}
+
+img {
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#personal-info p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+#gesture-recognition p, #gamemaker p {
+    font-size: 1.05em;
+    line-height: 1.5;
+}
