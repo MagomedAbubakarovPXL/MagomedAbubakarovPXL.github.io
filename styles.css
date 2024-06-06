@@ -2,19 +2,53 @@ body {
     font-family: Arial, sans-serif;
 }
 
-h2 {
+.navbar {
+    position: sticky;
+    top: 0;
+}
+
+h2, h3, h4, h5 {
     color: #343a40;
 }
 
-img {
+.container p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+img.personal-image {
     border-radius: 10px;
-    margin-bottom: 15px;
+    max-width: 15rem;
+    margin: 1rem 1rem 1rem 0;
+    float: left;
+    max-height: 21rem;
+    position: relative;
+    top: 2rem;
+    z-index: -1;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+section {
+    margin-bottom: 5rem;
 }
 
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 #personal-info p {
@@ -25,4 +59,11 @@ footer {
 #gesture-recognition p, #gamemaker p {
     font-size: 1.05em;
     line-height: 1.5;
+}
+
+img.footer-logo {
+    height: 1.5rem;
+    margin-bottom: 0.3rem;
+    position: absolute;
+    right: 3rem;
 }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerij</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">I-Talent Portfolio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Over mij</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="gallery.html">Galerij</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="gesture-recognition.html">Gesture Recognition</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="game-maker.html">GameMaker</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <section id="galerij">
+        <h2 class="text-center mb-4">Het leerproces</h2>
+        <p>Het leerproces was gebaseerd op het ontwikkelen van een eenvoudige webpagina die een portfolio van schilderijen presenteert, waarbij gebruikers de mogelijkheid hebben om de schilderijen te bekijken en contact op te nemen met de auteur-schilder. Deze portfolio bestaat uit de volgende hoofdcomponenten:</p>
+
+        <h3>Home</h3>
+        <p>De hoofdpagina bevat een carousel die drie schilderijen van de week toont. Dit dynamische element trekt de aandacht van gebruikers en biedt een aantrekkelijke visuele introductie tot de schilderijen.</p>
+
+        <h3>Gallery</h3>
+        <p>Op de galerijpagina worden alle beschikbare schilderijen van de schilder overzichtelijk weergegeven. Gebruikers kunnen door de collectie bladeren, informatie over elk schilderij bekijken en genieten van de kunstwerken op een gestructureerde en gebruiksvriendelijke manier.</p>
+
+        <h3>Contact</h3>
+        <p>De contactpagina biedt een eenvoudig formulier waarmee gebruikers de auteur-schilder kunnen bereiken. Dit formulier verzamelt basisinformatie zoals naam, e-mailadres en bericht, waardoor geïnteresseerde bezoekers gemakkelijk in contact kunnen komen met de kunstenaar.</p>
+
+        <h4>Projectdoel</h4>
+        <p>Het idee van dit project was om praktische ervaring op te doen met de basisfunctionaliteiten van React. Tijdens het ontwikkelingsproces lag de focus op verschillende belangrijke aspecten:</p>
+        <ul>
+            <li>Het begrip en toepassing van een component-gebaseerde benadering voor het bouwen van gebruikersinterfaces. Dit bevordert de modulariteit en herbruikbaarheid van code, wat essentieel is voor het efficiënt beheren en uitbreiden van de applicatie.</li>
+            <li>States van de applicatie leren beheren en bijwerken, wat cruciaal is voor een dynamische en interactieve gebruikersinterface. Door de staat op de juiste manier te beheren, kunnen componenten efficiënt reageren op gebruikersinteracties en data-updates.</li>
+            <li>De implementatie van navigatie binnen de applicatie, waardoor gebruikers soepel kunnen schakelen tussen de verschillende pagina's (Home, Gallery, Contact). Dit omvat de instelling van routes en het begrip van de werking van client-side routing in een single-page applicatie.</li>
+            <li>Bootstrap-integratie om vooraf geconfigureerde contactformulieren te implementeren waarbij de validatieregels en stijl out-of-the-box aanwezig zijn.</li>
+        </ul>
+
+        <h4>Uitwerking</h4>
+        <p>De repository is beschikbaar op de volgende URL: <a href="https://github.com/MagomedAbubakarovPXL/React-Gallery-App.git">React Gallery App</a></p>
+        <p>Om de applicatie lokaal op te starten moet deze repository van GitHub binnengehaald worden en de volgende commando’s in de projectfolder gerund worden:</p>
+        <ul>
+            <li><code>npm install</code> – in de folder waar zich het <code>package.json</code>-bestand bevindt.</li>
+            <li><code>npm start</code> – om de app op te starten.</li>
+        </ul>
+        <p>De applicatie bestaat uit verschillende componenten, een Image-model, data in de vorm van <code>images.json</code>-bestand en een data provider die objecten uit <code>images.json</code>-bestand naar Image-modellen mapt.</p>
+
+        <h4>Componenten en Functionaliteit</h4>
+        <h5>Home-pagina</h5>
+        <p>Bij het opstarten van de applicatie wordt de Home-pagina geladen met een carousel van drie geselecteerde schilderijen. De carousel is een geïntegreerde Bootstrap-component waarbij het interval kan worden ingesteld om de afbeeldingsovergangen te beheren. In deze applicatie wordt de volgende afbeelding na 5 seconden weergegeven.</p>
+
+        <h5>Gallery</h5>
+        <p>Wanneer op Gallery in de navigatiebalk wordt geklikt, wordt de Gallery-pagina geladen met een overzicht van alle schilderijen in de vorm van een grid, met onder elke afbeelding een titel en beschrijving. Door op een van de afbeeldingen te klikken, wordt de geselecteerde afbeelding vergroot om een beter zicht op het schilderij te geven. Deze functionaliteit wordt gerealiseerd door een overlaycomponent van Bootstrap op te roepen als de state van de <code>selectedImage</code>-variabele verandert.</p>
+
+        <h5>Contact</h5>
+        <p>Het contactformulier is een Bootstrap-component dat validaties en stijl bevat, waardoor het eenvoudig te integreren is in de applicatie. De ingebouwde instellingen en klassen van Bootstrap besparen veel extra werk dat anders nodig zou zijn om deze functionaliteiten en styling zelf te implementeren.</p>
+
+        <h4>Reflectie</h4>
+        <p>Dit project bood een waardevolle kans om praktische vaardigheden in React te ontwikkelen en inzicht te krijgen in de kernprincipes van moderne webontwikkeling. Wetende dat React het populairste framework is, had dit zeker invloed op mijn keuze, aangezien ik er op zijn minst een eerste kennismaking mee wilde hebben met het oog op verdere verdieping in de toekomst. Het resultaat is een applicatie die niet alleen de basisfunctionaliteiten van React demonstreert, maar ook een solide basis legt voor toekomstige, meer complexe projecten.</p>
+        <p>Tijdens het project stuitte ik op verschillende uitdagingen. Een van de grootste problemen was het beheren van de state binnen React, vooral bij het implementeren van de carousel en de overlay functionaliteit. Om dit aan te pakken, heb ik me verdiept in de documentatie van React en verschillende online tutorials gevolgd. Het oplossen van deze problemen gaf me een beter begrip van state management en het efficiënt updaten van de gebruikersinterface in React.</p>
+        <p>Ik vond het project zeer leerzaam en uitdagend. Het bood me de kans om te werken met React in combinatie met Bootstrap, en ik genoot ervan om de theorie om te zetten in een werkende applicatie. Dit project gaf me ook een voorproefje van de praktische problemen die kunnen optreden bij webontwikkeling en hoe deze op te lossen.</p>
+        <p>Ik heb veel geleerd van dit project. Allereerst heb ik mijn vaardigheden in React en Bootstrap aanzienlijk verbeterd. Ik heb ook geleerd hoe belangrijk het is om componenten herbruikbaar en modulair te maken. Daarnaast heb ik inzicht gekregen in het belang van goed state management en het effectief implementeren van navigatie binnen een webapplicatie.</p>
+        <p>Mijn sterke punten in dit project waren mijn doorzettingsvermogen en mijn vermogen om problemen op te lossen door middel van zelfstudie en onderzoek. Mijn zwakke punten lagen in mijn aanvankelijke onervarenheid met state management in React, wat in het begin tot enige verwarring leidde. Door volharding en studie kon ik deze zwakte echter omzetten in een leerervaring.</p>
+        <p>Dit project heeft dus een directe link met mijn opleiding. De kennis en vaardigheden die ik hiermee heb opgedaan zijn relevant voor mijn verdere studie en toekomstige carrière.</p>
+    </section>
+</div>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    &copy; 2024 I-Talent Portfolio. Magomed Abubakarov.
+    <img class="footer-logo" src="images/pxl_logo.png">
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
