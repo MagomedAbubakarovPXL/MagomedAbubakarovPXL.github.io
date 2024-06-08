@@ -34,8 +34,73 @@
 
 <div class="container mt-5">
     <section id="gesture-recognition">
-        <h2>Gesture Recognition</h2>
-        <p>Explore my work on gesture recognition projects where I have implemented various techniques to recognize hand gestures using computer vision and machine learning.</p>
+        <h1 class="text-center mb-4">Gesture Recognition met OpenCV</h1>
+        <h3>Algemeen</h3>
+        <p>Het doel van dit project was om een applicatie te bouwen die handgebaren kan herkennen en deze gebruikt om het systeemvolume van de computer aan te passen. Het project omvatte de volgende hoofdcomponenten:</p>
+        <ul>
+            <li>Handdetectie en -tracking: Met behulp van OpenCV en een handtracking module (HandTrackingModule) werd een systeem ontwikkeld om handbewegingen en -posities te detecteren en te volgen.</li>
+            <li>Gebarendetectie: Gebaseerd op de posities van de duim en wijsvinger werd de afstand tussen deze twee punten berekend, wat gebruikt werd om het volume aan te passen.</li>
+            <li>Audiovolumeregeling: De Pycaw library werd gebruikt om het systeemvolume van de computer te regelen op basis van de gedetecteerde handgebaren.</li>
+        </ul>
+        <p>Het idee van dit project was om praktische ervaring op te doen met computer vision en het bouwen van interactieve applicaties met behulp van gebaren.</p>
+        <p>Tijdens het ontwikkelingsproces lag de focus op verschillende belangrijke aspecten:</p>
+        <ul>
+            <li>Het begrip en toepassing van computer vision technieken voor handtracking: Dit omvatte het gebruik van OpenCV om de hand te detecteren en de posities van specifieke handpunten te volgen.</li>
+            <li>Het gebruik van geometrische berekeningen om gebaren te interpreteren: Door de afstand tussen de duim en wijsvinger te berekenen, werd bepaald hoe het volume moest worden aangepast.</li>
+            <li>Integratie van externe library’s (Pycaw) voor functionaliteitsuitbreiding: Pycaw werd gebruikt om de interactie met de systeemvolumeregeling te realiseren.</li>
+        </ul>
+
+        <h3>Uitwerking</h3>
+        <p>De repository is beschikbaar op de volgende URL: <a href="https://github.com/MagomedAbubakarovPXL/Gesture-Recognition-Script.git">Gesture Recognition Script</a></p>
+        <p>De applicatie is ontwikkeld in Python 3.x.x en bestaat uit één script met onderdelen die verder besproken worden.</p>
+
+        <h3>Webcam Initialisatie</h3>
+        <p>De webcam wordt ingesteld met een resolutie van 640x480 pixels, en de capture parameters worden aangepast om te beginnen met het lezen van de webcam beelden.</p>
+        <div class="image-below-container">
+            <img src="images/webcam_settings.png" class="image-below">
+            <div class="image-description">Instellingen webcam</div>
+        </div>
+
+        <h3>Handtracking Module</h3>
+        <p>Met behulp van de HandTrackingModule worden de handen gedetecteerd.</p>
+        <div class="image-below-container" style="width: 32rem">
+            <img src="images/handtracking_initialization.png" class="image-below" style="height: 3rem; width: 30rem">
+            <div class="image-description">Initialisatie HandTrackingModule</div>
+        </div>
+        <p>Zodra een hand gedetecteerd is, zorgt de HandTrackingModule voor de aanduiding van landmarks op de hand.</p>
+        <div class="image-below-container">
+            <img src="images/hand_detection.png" class="image-below">
+            <div class="image-description">Handdetectie door HandTrackingModule</div>
+        </div>
+        <p>Dit helpt om de wijs- en duimvinger te selecteren en onze logica verder te ontwikkelen, waarbij veranderingen in de afstand tussen deze twee vingers uiteindelijk zorgen voor de aanpassing van het systeemgeluid van de computer.</p>
+        <div class="image-below-container">
+            <img src="images/finger_tracking_logic.png" class="image-below">
+            <div class="image-description">Logica voor tracking van wijs- en duimvingers</div>
+        </div>
+
+        <h3>Volumeregeling met Pycaw</h3>
+        <p>De Pycaw library wordt gebruikt om het systeemvolume aan te passen.</p>
+        <div class="image-below-container">
+            <img src="images/pycaw_volume_control.png" class="image-below">
+            <div class="image-description">Pycaw - Systeemvolumebeheer logica</div>
+        </div>
+        <p>Op basis van de afstand tussen de duim en wijsvinger wordt het volume lineair geïnterpoleerd tussen het minimum en maximum volume bereik.</p>
+        <div class="image-below-container">
+            <img src="images/volume_adjustment.png" class="image-below">
+            <div class="image-description">Toepassing van volumeverandering</div>
+        </div>
+
+        <h3>Gebarendetectie, Volumeregeling en FPS Weergave</h3>
+        <p>Zoals eerder vermeld, wordt de detectie van de afstand tussen de duim en wijsvinger gebruikt om het volume in real time aan te passen. Deze afstand wordt samen met de volumebalk visueel weergegeven in het beeld van de webcam. Daarnaast wordt, om de prestaties van de applicatie te monitoren, het aantal frames per seconde (FPS) berekend en op het scherm weergegeven.</p>
+        <div class="image-below-container">
+            <img src="images/gesture_recognition_in_action.png" class="image-below">
+            <div class="image-description">‘Gesture recognition’ in werking</div>
+        </div>
+
+        <h2 class="text-center mb-4">Reflectie</h2>
+        <p>Dit project bood een waardevolle kans om praktische vaardigheden in ‘computer vision’ en interactieve applicatieontwikkeling te ontwikkelen. De keuze viel op een OpenCV-gerelateerd project omdat deze toolkit erg populair is en veel functies biedt om ‘computer vision’ te leren gebruiken. De populariteit van OpenCV zorgt ook voor een groot aantal tutorials die het leerproces enorm vergemakkelijken. Zonder goede tutorials zouden functionaliteiten zoals het berekenen van de afstand tussen de vingers en het interpoleren ervan naar systeemcommando's enorm moeilijk geweest zijn.</p>
+        <p>Het grootste probleem tijdens dit project lag vooral in het vinden van de juiste tutorials die elkaar aanvulden om tot een solide product kunnen te komen. Door middel van dit project heb ik een eerste ervaring met 'computer vision' opgedaan en ideeën gekregen over hoe ik dit verder zou kunnen uitbreiden. In de toekomst zou ik dit project willen uitbreiden door meer commando's toe te voegen, zodat de bediening van het computersysteem verder kan worden ingesteld om correct te reageren op visuele inputs van mijn handgebaren. Ook zou ik start- en stopgebaren willen introduceren, zodat de gebarentracering alleen plaatsvindt wanneer ik hiervoor kies, om zo onverwachte aanpassingen in de computerinstellingen te vermijden.</p>
+        <p>Hoewel het een vrij beperkte ervaring met AI-gerelateerde technologieën was, vind ik dat het een goede basis legt om verder op voort te bouwen en deze technologie beter te begrijpen. De opgedane vaardigheden en kennis zijn niet alleen relevant voor mijn huidige studie, maar ook voor mijn toekomstige carrière. Ik kijk ernaar uit om de AI-technologieën verder te verkennen en mijn expertise op dit gebied uit te breiden.</p>
     </section>
 </div>
 

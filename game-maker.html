@@ -32,10 +32,176 @@
     </div>
 </nav>
 
+
 <div class="container mt-5">
-    <section id="gamemaker">
-        <h2>GameMaker</h2>
-        <p>Check out the games I have developed using GameMaker. These projects showcase my skills in game design, programming, and user experience.</p>
+    <section id="game-maker">
+        <h1 class="text-center mb-4">Arcade Game met GameMaker</h1>
+        <h3>Algemeen</h3>
+        <p>In dit project wilde ik een basiskennis opbouwen over de manier waarop een spel wordt ontwikkeld en besloot
+            ik om een 2D arcade spel te maken met één level, een hoofdpersonage en een aantal vijanden.</p>
+        <p>Tijdens de uitwerking hiervan wilde ik verschillende aspecten van spelcreatie leren kennen, zoals het
+            implementeren van verschillende lagen met achtergrond- en interactieve objecten, het importeren en aanpassen
+            van pixel-art sprites om deze vervolgens als animaties in het spel toe te voegen, en het coderen van
+            interacties tussen objecten en personages.</p>
+        <p>Uiteindelijk is dit een eenvoudig spel geworden met de volgende componenten:</p>
+        <ul>
+            <li>Bullets: Een kogelobject dat het hoofdpersonage uit zijn wapen schiet. Dit is samengesteld uit twee
+                sprite-afbeeldingen die de animatie van een kogelbeweging helpen te imiteren.
+            </li>
+            <li>Gun: Een wapenobject dat aan het hoofdpersonage is toegewezen, het punt waarvan de muisbeweging volgt en
+                kogelobjecten lanceert.
+            </li>
+            <li>Player: Een hoofdpersonageobject dat uit drie collecties van sprites bestaat, namelijk ‘idle’, ‘jump’ en
+                ‘run’.
+            </li>
+            <li>Enemies: Een vijandobject dat uit vier collecties van sprites bestaat, namelijk ‘dead’, ‘idle’, ‘jump’,
+                ‘run’.
+            </li>
+            <li>Walls: Een muurobject dat zowel voor vloer, muren als in-game locaties gebruikt wordt waar speler en
+                vijanden op kunnen staan.
+            </li>
+            <li>Background: Een achtergrond met landschap en horizon die dienen als decoratie.</li>
+        </ul>
+        <p>Deze sprites/pixel art-objecten werden voornamelijk gedownload van websites zoals ‘itch.io’, waar gratis
+            assets voor niet-commercieel gebruik beschikbaar worden gesteld.</p>
+
+        <h3>Uitwerking</h3>
+        <p>De repository is beschikbaar op volgende URL: <a
+                href="https://github.com/MagomedAbubakarovPXL/GameMaker_Platformer.git">GameMaker Platformer</a></p>
+        <p>Om dit spel op te starten moet GameMaker-client geïnstalleerd zijn en het project kan geopend worden door op
+            ‘File’->’Open Project’ te klikken.</p>
+        <p>Zoals eerder beschreven, bestaat het project uit één Room met verschillende lagen die afhankelijk van hun
+            functionaliteiten boven elkaar worden geplaatst. Zo dient bijvoorbeeld de Background als laag die helemaal
+            onderaan staat om niet over andere lagen getoond te worden.</p>
+        <div class="image-below-container">
+            <img src="images/project_structure.png" class="image-below">
+            <div class="image-description">Projectstructuur</div>
+        </div>
+        <p>Deze lagen zijn containers die objecten bevatten waar sprites en logica in gedefinieerd worden.</p>
+        <div class="image-below-container">
+            <img src="images/gun_layer.png" class="image-below">
+            <div class="image-description">Gun-laag met Gun-object daarin</div>
+        </div>
+        <p>De objecten worden aangemaakt in de map ‘Objects’ van de Asset Browser en zullen verder in iets meer detail
+            besproken worden.</p>
+        <div class="image-below-container">
+            <img src="images/object_assets.png" class="image-below">
+            <div class="image-description">Objecten-assets</div>
+        </div>
+
+        <h3>Bullet-object</h3>
+        <p>Het Bullet-object is aangemaakt op basis van Bullet-sprites die voor de visuele representatie zorgen en
+            events die logica bevatten om specifieke situaties af te handelen.</p>
+        <p>Zo worden bijvoorbeeld de volgende acties uitgevoerd als het Bullet-object de vijand raakt:</p>
+        <ul>
+            <li>De gezondheid van de vijand wordt verminderd.</li>
+            <li>De vijand flitst drie keer om visueel aan te geven dat hij geraakt is.</li>
+            <li>Informatie over de richting van de impact wordt vastgelegd (nodig om te bepalen in welke richting de
+                vijand valt als hij dood is).
+            </li>
+            <li>Het Bullet-object wordt verwijderd.</li>
+        </ul>
+        <div class="image-below-container">
+            <img src="images/bullet_logic.png" class="image-below">
+            <div class="image-description">Bullet-object en logica voor wanneer een vijand geraakt is.</div>
+        </div>
+
+        <h3>Camera-object</h3>
+        <p>Het camera-object dient om een aangegeven derde object te kunnen volgen. Hier wordt de logica bepaald over
+            wie of wat gevolgd moet worden, op welke afstand, vanuit welke hoek, etc.</p>
+        <p>In dit project volgt de camera het Player-object, ons hoofdpersonage, door constant zijn positie te wijzigen
+            ten opzichte van het Player-object. Dit zorgt ervoor dat wanneer het Player-object beweegt, de camera hem
+            blijft volgen.</p>
+        <div class="image-below-container">
+            <img src="images/camera_logic.png" class="image-below">
+            <div class="image-description">Camera-object en logica om Player-object te volgen</div>
+        </div>
+
+        <h3>Enemy-object</h3>
+        <p>Het Enemy-object is in twee delen opgedeeld. Eén object handelt de standaard logica voor bewegingen af en het
+            andere zorgt voor de animatie en logica bij de dood.</p>
+        <p>In het eerste object worden functies gedefinieerd voor de initialisatie, het bewegingspatroon en de reactie
+            op het geraakt worden door een Bullet-object. Wanneer een Bullet-object een Enemy-object raakt, ontvangt het
+            Enemy-object de waarde van de 'flash'-variabele die vervolgens wordt gebruikt om de flash-animatie te
+            triggeren.</p>
+        <div class="image-below-container">
+            <img src="images/enemy_logic.png" class="image-below">
+            <div class="image-description">Enemy-object en de logica bij het geraakt worden door een Bullet-object.
+            </div>
+        </div>
+        <p>Als de gezondheid van het Enemy-object op of onder nul komt, wordt het eerste Enemy-object verwijderd en
+            wordt het tweede object opgeroepen om de 'sterf'-animatie af te spelen.</p>
+        <div class="image-below-container">
+            <img src="images/enemy_dead.png" class="image-below">
+            <div class="image-description">Creatie van Enemy_dead-object</div>
+        </div>
+
+        <h3>Gun-object</h3>
+        <p>Het wapen in dit spel wordt op de schouder van het Player-object geplaatst en volgt de cursor van de muis 360
+            graden. Wanneer op de linkermuisknop wordt geklikt, wordt het Bullet-object gecreëerd en gelanceerd in de
+            richting van de muispositie op dat moment.</p>
+        <p>Daarnaast is er een terugslag en schietvertraging ingesteld om het wapen een gevoel van gewicht te geven en
+            de logica iets realistischer te maken.</p>
+        <div class="image-below-container">
+            <img src="images/gun_logic.png" class="image-below">
+            <div class="image-description">Gun-object en logica</div>
+        </div>
+
+        <h3>Player-object</h3>
+        <p>Het Player-object bevat uitgeschreven logica voor de besturing, waarbij beweging naar links en rechts en de
+            springactie aan toetsenbordknoppen zijn gekoppeld om tijdens het spel met dit object te kunnen bewegen.</p>
+        <p>Ook is er algemene logica ingesteld over de manier waarop het Player-object moet reageren bij een botsing met
+            muren of sprongen op Wall-objecten.</p>
+        <div class="image-below-container">
+            <img src="images/player_logic.png" class="image-below">
+            <div class="image-description">Player-object en logica.</div>
+        </div>
+        <p>Afhankelijk van de actie die het Player-object uitvoert, worden verschillende sprite-collecties opgeroepen om
+            deze actie te visualiseren. Zo wordt, als het Player-object in de lucht is (door te springen of te vallen),
+            de 'Player_jump'-sprite getoond. Als hij op de grond staat, wordt de 'Idle'-sprite getoond, en bij beweging
+            wordt de 'Run'-sprite gebruikt.</p>
+        <div class="image-below-container">
+            <img src="images/player_sprites.png" class="image-below">
+            <div class="image-description">Condities om juiste sprites op te roepen</div>
+        </div>
+
+        <h3>Resultaat</h3>
+        <p>Nebes de eerder beschreven objecten zijn er ook andere elementen die voornamelijk statische en visuele
+            functies hebben en geen logica bevatten. Het spel heeft dus een achtergrondafbeelding met illustraties en
+            een horizon, evenals Wall-objecten die voor decoratie en spelomgeving zorgen.</p>
+        <p>Het eindresultaat is een basisproject voor een arcade spel dat een solide fundament legt om verder op te
+            bouwen. Dit project biedt de mogelijkheid om toekomstige functies en complexiteit toe te voegen, zoals meer
+            gedetailleerde niveaus, extra vijanden, power-ups, en uitgebreide gameplay-mechanica. Het vormt dus een goed
+            startpunt voor verdere ontwikkeling en verfijning.</p>
+        <div class="image-below-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XPkNGyRBT_M?si=Vnz-iX0v0k1m6ztX"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="image-description">De spelinterface</div>
+        </div>
+
+        <h2 class="text-center mb-4">Reflectie</h2>
+        <p>Dit project heeft me een diepgaand inzicht gegeven in de wereld van game development, ondanks het feit dat
+            het gemaakte spel vrij eenvoudig is en nog in ontwikkeling. Ik heb ook een grote waardering gekregen voor
+            het werk dat game-ontwikkelaars verrichten om spellen te maken waar veel mensen van genieten.</p>
+        <p>Hoewel 2D spellen relatief eenvoudig te maken lijken, gaan er toch veel moeilijkheden mee gepaard. Het is dus
+            nog indrukwekkender om te bedenken wat voor werk er in de ontwikkeling van 3D spellen, RPG's en andere
+            genres gaat.</p>
+        <p>Dit project heeft me ook geleerd geduld te hebben wanneer ik bugs tegenkom in een spel dat ik koop en speel,
+            wetende dat het proces van spelcreatie zeker niet eenvoudig is.</p>
+        <p>Ik heb een zeer interessante sector ontdekt door dit project te kiezen en eraan te werken. De mogelijkheden
+            die game engines bieden en de verschillende soorten assets die gratis toegankelijk zijn, zorgen ervoor dat
+            meer mensen makkelijker iets voor zichzelf kunnen proberen te maken.</p>
+        <p>Zo plan ik in de nabije toekomst een spel te bedenken en te maken waarin mijn dochter het hoofdpersonage is.
+            Met de huidige technologische oplossingen voor game-creatie is dit mogelijk geworden, wat ik alleen maar
+            toejuich.</p>
+        <p>Natuurlijk gaat zelfs de eenvoudige game-ontwikkeling nog steeds gepaard met veel uitdagingen, waarmee ik
+            tijdens dit project licht in aanraking ben gekomen. Deze uitdagingen varieerden van het zoeken naar de
+            juiste tutorials en algoritmes voor specifieke acties tot het simpelweg aanpassen van pixel art om er
+            uiteindelijk sprites van te maken voor animaties.</p>
+        <p>Niettemin, met genoeg motivatie kunnen deze en alle andere potentiële uitdagingen worden aangepakt door
+            verschillende manieren te proberen om tot een oplossing te komen.</p>
     </section>
 </div>
 
